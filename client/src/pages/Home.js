@@ -23,6 +23,10 @@ class Home extends Component {
     .catch(err => console.log(err));
   }
 
+  onClick = () => {
+    console.log("clicked")
+  }
+
   render() {
     return (
       <>
@@ -46,12 +50,13 @@ class Home extends Component {
                 {this.state.results.map(book => {
                   return (
                     <BookItem 
-                    key={book.volumeInfo.title}
+                    key={book.volumeInfo.id}
                     title={book.volumeInfo.title}
-                    href={book.previewLink}
+                    href={book.volumeInfo.previewLink}
                     authors={book.volumeInfo.authors}
                     description={book.volumeInfo.description}
                     thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                    onClick={this.onClick}
                     />
                   );
                 })}
