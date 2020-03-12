@@ -3,6 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import Search from "../components/Search";
 import { Container, Row, Col } from "../components/Grid"
 import { BookList, BookItem } from '../components/BookList';
+import API from "../utils/API";
 
 class Home extends Component {
   state = {
@@ -17,8 +18,9 @@ class Home extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    //this is where will hit our route that will hit googleBooks for the search term
-  
+    API.getGoogleBooks(this.state.search)
+    .then(res => this.setState({ results: res.data}))
+    .catch(err => console.log(err));
   }
 
   render() {
@@ -44,12 +46,12 @@ class Home extends Component {
                 {this.state.results.map(book => {
                   return (
                     <BookItem 
-                    key={book.title}
-                    title={book.title}
+                    key={book.volumeInfo.title}
+                    title={book.volumeInfo.title}
                     href={book.previewLink}
-                    authors={book.authors}
-                    description={book.description}
-                    thumbnail={book.imageLinks.thumbnail}
+                    authors={book.volumeInfo.authors}
+                    description={book.volumeInfo.description}
+                    thumbnail={book.volumeInfo.imageLinks.thumbnail}
                     />
                   );
                 })}
