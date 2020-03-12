@@ -1,19 +1,18 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 import './App.css';
-import axios from 'axios';
+
 
 function App () {
-  const [randomStr, setRandomStr] = useState('');
-  useLayoutEffect(() => {
-    axios.get('/api/json')
-    .then(res => {
-      setRandomStr(res.data.test)
-    })
-  })
   return (
-    <div>
-      {randomStr}
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+       
+      </div>
+    </Router>
   );
 }
 

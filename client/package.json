@@ -1,7 +1,7 @@
 {
-  "name": "node_react_startup_structure_client",
+  "name": "react-google-books",
   "version": "1.0.0",
-  "description": "The client for the Node React Startup Structure - created with create-react-app",
+  "description": "",
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1"
   },
   "scripts": {
